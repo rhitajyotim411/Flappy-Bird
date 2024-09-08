@@ -21,12 +21,6 @@ Ensure you have Python installed, along with the **Pygame** library. You can ins
 pip install pygame
 ```
 
-Alternatively, you can install all dependencies from the **requirements.txt** file:
-
-```bash
-pip install -r requirements.txt
-```
-
 ## How to Run
 
 1. Clone this repository:
