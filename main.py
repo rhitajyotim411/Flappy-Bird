@@ -88,9 +88,10 @@ def score_check():
         elif pipe_list[0].centerx < 20:
             sr_up = True
 
+
 # time of the day
 tm = datetime.now().hour
-if tm>=5 and tm<=16:
+if tm >= 5 and tm <= 16:
     ast = ('day', 'yellowbird', 'green')
 else:
     ast = ('night', 'redbird', 'red')
