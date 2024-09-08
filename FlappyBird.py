@@ -1,6 +1,7 @@
 import pygame
 import sys
 import random
+from datetime import datetime
 
 pygame.init()
 screen = pygame.display.set_mode((288, 512))  # draws a canvas of size 288x512
@@ -87,21 +88,27 @@ def score_check():
         elif pipe_list[0].centerx < 20:
             sr_up = True
 
+# time of the day
+tm = datetime.now().hour
+if tm>=5 and tm<=16:
+    ast = ('day', 'yellowbird', 'green')
+else:
+    ast = ('night', 'redbird', 'red')
 
 # surfaces
-bg = pygame.image.load('assets/background-night.png').convert()
+bg = pygame.image.load(f'assets/background-{ast[0]}.png').convert()
 flr = pygame.image.load('assets/base.png').convert()
 
-bird_up = pygame.image.load('assets/redbird-upflap.png').convert_alpha()
-bird_mid = pygame.image.load('assets/redbird-midflap.png').convert_alpha()
-bird_down = pygame.image.load('assets/redbird-downflap.png').convert_alpha()
+bird_up = pygame.image.load(f'assets/{ast[1]}-upflap.png').convert_alpha()
+bird_mid = pygame.image.load(f'assets/{ast[1]}-midflap.png').convert_alpha()
+bird_down = pygame.image.load(f'assets/{ast[1]}-downflap.png').convert_alpha()
 bird = [bird_up, bird_mid, bird_down]
 bird_index = 0
 bird_rect = bird[bird_index].get_rect(center=(50, 256))
 FLAP = pygame.USEREVENT
 pygame.time.set_timer(FLAP, 50)
 
-pipe = pygame.image.load('assets/pipe-red.png').convert()
+pipe = pygame.image.load(f'assets/pipe-{ast[2]}.png').convert()
 pipe_list = []
 SPAWNPIPE = pygame.USEREVENT + 1
 pygame.time.set_timer(SPAWNPIPE, 1000)
